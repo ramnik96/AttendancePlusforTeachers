@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "430958557663",
+    "firebase_url": "https://attendanceplus-9743f.firebaseio.com",
+    "project_id": "attendanceplus-9743f",
+    "storage_bucket": "attendanceplus-9743f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430958557663:android:84ea6950317641a6",
+        "android_client_info": {
+          "package_name": "com.example.ramnik_singh.attendanceplus_teacher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430958557663-9e1ni56fteop8klf648208jpj9b0rvgf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ramnik_singh.attendanceplus_teacher",
+            "certificate_hash": "984702708a053ee1e8345ba72db845685d52a4c5"
+          }
+        },
+        {
+          "client_id": "430958557663-8oq2jl4lild8f8m98v3qj95eeobhc27r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ramnik_singh.attendanceplus_teacher",
+            "certificate_hash": "e6bf7573453cf0339c366acf12098efe808d808a"
+          }
+        },
+        {
+          "client_id": "430958557663-4r23sb0863cv1afi42imcv633tljrkfr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB39EF5Af3VU8QACwuGtBcMv0Jv5_V77Tk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430958557663-4r23sb0863cv1afi42imcv633tljrkfr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

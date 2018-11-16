@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">AttendancePlus for Teachers</string>
+    <string-array name="branches">
+        <item>Select Branch</item>
+        <item>Aerospace Engineering</item>
+        <item>Civil Engineering</item>
+        <item>Computer Science and Engineering</item>
+        <item>Electrical Engineering</item>
+        <item>Electronics and Communication Engineering</item>
+        <item>Mechanical Engineering</item>
+        <item>Metallurgical Engineering</item>
+        <item>Production Engineering</item>
+        </string-array>
+
+    <string-array name="semester">
+        <item>Select Semester</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+</resources>

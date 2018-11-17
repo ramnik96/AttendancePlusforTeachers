@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.support.annotation.Keep;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -45,6 +46,7 @@ import com.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -52,16 +54,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-class student{
-    String SID;
-    String Name;
-    public student(String sid, String Name){
-        this.SID=sid; this.Name=Name;
-    }
-}
-
-public class TeacherDashboard extends AppCompatActivity {
+@Keep
+public class TeacherDashboard extends AppCompatActivity implements Serializable {
     private static final String TAG = "TeacherDashboard";
     private Button buttonScan,buttonMail;
     private EditText editTextSubject,editTextSemester,editTextRemarks;
@@ -160,6 +154,10 @@ public class TeacherDashboard extends AppCompatActivity {
             public void onClick(View view) {
                 progressbar3.setVisibility(View.VISIBLE);
                 //Map<String, String> map = new HashMap<String, String>();
+                Semester=editTextSemester.getText().toString().trim();
+                Subject=editTextSubject.getText().toString().trim();
+                Remarks=editTextRemarks.getText().toString().trim();
+                finalnode=Subject+"_"+Semester+"_"+Date+"_"+Timings+"_"+Remarks;
                 FirebaseDatabase.getInstance()
                         .getReference()
                         .child("AttendanceRegister")
@@ -167,21 +165,26 @@ public class TeacherDashboard extends AppCompatActivity {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                                    for (DataSnapshot snapshot2 : snapshot.getChildren()) {
+                                    Log.d("KEY", snapshot.getKey());
+                                    Log.d("finalnode", finalnode);
 
-                                        Log.d("MAJOR", "value :" + snapshot.getValue());
-                                        Log.d("MAJOR", "value :" + snapshot.getChildrenCount());
+                                    if(snapshot.getKey().equals(finalnode)) {
+                                        for (DataSnapshot snapshot2 : snapshot.getChildren()) {
 
-                                        Log.d("MAJOR", "value :" + snapshot2.getValue());
-                                        Log.d("MAJOR", "value :" + snapshot2.getChildrenCount());
-                                        String key,value;
-                                        key = snapshot2.child("SID").getValue().toString();
-                                        value = snapshot2.child("Name").getValue().toString();
-                                        map.put(key,value);
-                                        //Toast.makeText(TeacherDashboard.this, key+" "+value,Toast.LENGTH_LONG).show();
-                                        Log.d("tag","PAIR: "+ key+" "+value);
+                                            Log.d("MAJOR", "value :" + snapshot.getValue());
+                                            Log.d("MAJOR", "value :" + snapshot.getChildrenCount());
+
+                                            Log.d("MAJOR", "value :" + snapshot2.getValue());
+                                            Log.d("MAJOR", "value :" + snapshot2.getChildrenCount());
+                                            String key, value;
+                                            key = snapshot2.child("SID").getValue().toString();
+                                            value = snapshot2.child("Name").getValue().toString();
+                                            map.put(key, value);
+                                            //Toast.makeText(TeacherDashboard.this, key+" "+value,Toast.LENGTH_LONG).show();
+                                            Log.d("tag", "PAIR: " + key + " " + value);
+                                        }
                                     }
-                                break;
+
                                 }
                                 Log.d("MAP",map.toString());
                                 CSVWriter writer = null;
